@@ -1,19 +1,36 @@
 import './App.css'
-
+import tasks from '../tasks';
 
 function Header() {
   return (
-    <div style={{ backgroundColor: 'lightgreen', padding: '5px', textAlign: 'left' }}>
+    <div className="navbar">
       <h1>Task Manager</h1>
     </div>
   );
 }
 
 function Main() {
-  return (
 
-    <div style={{ marginTop: '20px' }}>
-      <h3 style={{ fontSize: '20px' }}>Current Tasks (4)</h3>
+  const filteredTasks = tasks.filter(task =>
+    task.state === "backlog" || task.state === "in_progress"
+  );
+
+  return (
+    <div className="container">
+      <h3>Current Tasks ({filteredTasks.length})</h3>
+      <ul>
+
+        {filteredTasks.map(task => (
+          <li key={task.id}>
+            <strong>{task.title}</strong>
+            <span>{task.state} </span>
+
+            <p>Priority: {task.priority}</p>
+            <p>Estimated Time: {task.est_time}</p>
+          </li>
+        ))}
+
+      </ul>
     </div >
   )
 }
