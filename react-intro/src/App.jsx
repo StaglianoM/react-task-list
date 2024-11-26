@@ -1,5 +1,5 @@
 import './App.css'
-import tasks from '../tasks';
+import tasks from './data/tasks';
 
 function Header() {
   return (
@@ -15,6 +15,11 @@ function Main() {
     task.state === "backlog" || task.state === "in_progress"
   );
 
+  const completedTask = tasks.filter(task =>
+    task.state === "completed")
+
+
+
   return (
     <div className="container">
       <h3>Current Tasks ({filteredTasks.length})</h3>
@@ -29,8 +34,23 @@ function Main() {
             <p>Estimated Time: {task.est_time}</p>
           </li>
         ))}
-
       </ul>
+
+      <hr />
+
+      <h3>Completed Task ({completedTask.length})</h3>
+      <ul>
+        {completedTask.map(task => (
+          <li key={task.id}>
+            <strong>{task.title}</strong>
+            <span>{task.state} </span>
+
+            <p>Priority: {task.priority}</p>
+            <p>Estimated Time: {task.est_time}</p>
+          </li>
+        ))}
+      </ul>
+
     </div >
   )
 }
