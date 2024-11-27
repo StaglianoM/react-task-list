@@ -27,8 +27,21 @@ p {
 }
 
 span {
-    background-color: orange;
     padding: 8px;
     display: inline-block;
     margin-left: 10px;
+    color: white;
+}
+
+.completed {
+    background-color: green;
+
+}
+
+.in_progress {
+    background-color: rgb(248, 164, 8);
+}
+
+.backlog {
+    background-color: red;
 }

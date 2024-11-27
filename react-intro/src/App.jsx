@@ -21,12 +21,15 @@ function Main() {
 
 
   const filter = (taskList) => {
+
+
+
     return (
       <ul>
         {taskList.map(task => (
           <li key={task.id}>
             <strong>{task.title}</strong>
-            <span>{task.state} </span>
+            <span className={task.state}>{task.state} </span>
 
             <p>Priority: {task.priority}</p>
             <p>Estimated Time: {task.est_time}</p>
